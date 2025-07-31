@@ -1,12 +1,8 @@
 <nav class="bg-transparent px-8 py-14 ">
    <div class="w-1/2   mx-auto flex justify-between  items-center bg-red-600 text-white px-6 py-1 rounded-full shadow-lg">
-        <!-- Icônes -->
-        <div class="flex items-center space-x-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-            </svg>
+        
+        <div class="flex items-center ">
+           
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -15,24 +11,26 @@
             </svg>
         </div>
 
-        <!-- Menu desktop -->
+        
         <div class="hidden md:flex space-x-6 font-medium">
-            <a href="index.php#about" class="hover:underline">Home</a>
-            <a href="index.php#projects" class="hover:underline">Projects</a>
-            <a href="index.php#contact" class="hover:underline">Contact</a>
+            <a href="index.php" class="hover:underline">HOME</a>
+            <a href="projects.php" class="hover:underline">PROJECTS</a>
+            <a href="contact.php" class="hover:underline">CONTACT</a>
+            <a href="demande.php" class="hover:underline">DEMANDE</a>
         </div>
 
-        <!-- Burger button -->
+        
         <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
             ☰
         </button>
     </div>
 
-    <!-- Menu mobile -->
+    
     <div id="mobile-menu" class="hidden md:hidden bg-red-600 text-white rounded-xl mt-2 py-2 px-4 space-y-2 font-medium shadow-lg">
-        <a href="index.php#about" class="block hover:underline">Home</a>
-        <a href="index.php#projects" class="block hover:underline">Projects</a>
-        <a href="index.php#contact" class="block hover:underline">Contact</a>
+        <a href="index.php" class="block hover:underline">HOME</a>
+        <a href="projects.php" class="block hover:underline">PROJECTS</a>
+        <a href="contact.php" class="block hover:underline">CONTACT</a>
+        <a href="demande.php" class="block hover:underline">DEMANDE</a>
     </div>
 </nav>
 

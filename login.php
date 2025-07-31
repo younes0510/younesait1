@@ -1,28 +1,7 @@
 <?php
 
-session_start();
-include './config.php';
-
-if (isset($_POST['submit'])) {
-    $email = htmlspecialchars($_POST['email']);
-    $password = $_POST['password'];  
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_name'] = $user['firstName'];
-        header("Location: dashboard.php");
-        exit;
-    } else {
-        $error = "Email ou mot de passe incorrect.";
-    }
-}
-
+include './actions/config.php';
+include './actions/loginAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -32,24 +11,37 @@ if (isset($_POST['submit'])) {
     <title>Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
-<div class="max-w-md mx-auto mt-20 bg-white p-6 rounded-lg shadow-lg">
-    <h1 class="text-xl font-bold mb-4 text-center">Connexion</h1>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-    <?php if (isset($_GET['success'])) { echo "<p class='text-green-600 mb-4'>Compte créé avec succès. Connecte-toi maintenant.</p>"; } ?>
-    <?php if (isset($error)) { echo "<p class='text-red-500 mb-4'>$error</p>"; } ?>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center text-indigo-700">Connexion</h1>
 
-    <form method="POST" action="login.php">
-        <input type="email" name="email" placeholder="Email" required class="mb-4 w-full border rounded px-3 py-2">
-        <input type="password" name="password" placeholder="Mot de passe" required class="mb-6 w-full border rounded px-3 py-2">
-        <button type="submit" name="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">
-            Se connecter
-        </button>
-    </form>
+        <?php if (isset($error)) : ?>
+            <p class="mb-4 text-red-600 text-sm text-center"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
 
-    <p class="mt-4 text-sm text-center">
-        Pas encore inscrit ? <a href="register.php" class="text-indigo-600 hover:underline">Créer un compte</a>
-    </p>
-</div>
+        <form method="POST" class="space-y-4">
+            <div>
+                <label class="block text-gray-700">Email</label>
+                <input type="email" name="email" required
+                       class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:ring-indigo-200">
+            </div>
+            <div>
+                <label class="block text-gray-700">Mot de passe</label>
+                <input type="password" name="password" required
+                       class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:ring-indigo-200">
+            </div>
+            <button type="submit"
+                    class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">
+                Se connecter
+            </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-500 mt-4">
+            Pas encore inscrit ?
+            <a href="register.php" class="text-indigo-600 hover:underline">Créer un compte</a>
+        </p>
+    </div>
+
 </body>
 </html>
