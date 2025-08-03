@@ -1,25 +1,6 @@
 <?php
 include 'actions/config.php';
-
-if (isset($_POST['submit'])) {
-    $nom = htmlspecialchars($_POST['nom']);
-    $prenom = htmlspecialchars($_POST['prenom']);
-    $email = htmlspecialchars($_POST['email']);
-    $demande = htmlspecialchars($_POST['demande']);
-    $telephone = htmlspecialchars($_POST['telephone']);
-    $brend = htmlspecialchars($_POST['brend']);
-
-    $stmt = $conn->prepare("INSERT INTO demandes (nom, prenom, email, demande, telephone, brend) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $nom, $prenom, $email, $demande, $telephone, $brend);
-
-    if ($stmt->execute()) {
-        $message = "Votre demande a bien été envoyée. Merci pour votre confiance.";
-    } else {
-        $message = "Erreur lors de l'envoi. Veuillez réessayer.";
-    }
-}
-
-
+include 'actions/demandeAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +116,7 @@ for ($i = 0; $i < $count; $i++) {
                 </div>
 
                 <button type="submit" name="submit" class="mt-6 w-full bg-red-600 hover:bg-red-700 rounded-xl px-4 py-3 font-bold transition">
-                    Envoyer ma demande 🚀
+                    Envoyer ma demande 
                 </button>
             </form>
         </div>

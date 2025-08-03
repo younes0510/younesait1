@@ -106,7 +106,7 @@ for ($i = 0; $i < $count; $i++) {
             class="w-1/2 h-96 rounded-xl shadow-lg object-cover">
 
         <div>
-            <img src="public/NEXTORAL.png" alt="Logo NEXTORA"
+            <img src="public/NEXTORA.png" alt="Logo NEXTORA"
                  class="w-1/2 h-44 rounded-xl shadow-lg object-cover mb-4 mx-10">
 
             <h1 id="typewriter-title" class="text-3xl font-bold mb-2"></h1>
