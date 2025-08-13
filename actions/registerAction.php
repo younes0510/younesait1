@@ -38,4 +38,3 @@ if (isset($_POST['submit'])) {
         $error = "Veuillez remplir tous les champs.";
     }
 }
-?>

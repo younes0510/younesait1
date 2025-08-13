@@ -47,11 +47,11 @@ include 'actions/demandeAction.php';
 </head>
 
 <body>
- <?php
-$letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,?;!@#$%^&*()_+[]{}|;':\",./<>¨?£¤éàèçàâêîôû";
-$count = 150; 
+    <?php
+    $letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,?;!@#$%^&*()_+[]{}|;':\",./<>¨?£¤éàèçàâêîôûazertyuiopqsdfghjklmwxcvbn";
+    $count = 150;
 
-echo '<style>
+    echo '<style>
 .falling-letter {
     position: absolute;
     color: red;
@@ -71,26 +71,26 @@ echo '<style>
 }
 </style>';
 
-for ($i = 0; $i < $count; $i++) {
-    $char = $letters[random_int(0, strlen($letters) - 1)];
-    $left = rand(0, 100);
-    $top = rand(-200, 0); 
-    $duration = rand(5, 15);
-    $opacity = rand(30, 100) / 100;
-    $fontSize = rand(12, 20);
+    for ($i = 0; $i < $count; $i++) {
+        $char = $letters[random_int(0, strlen($letters) - 1)];
+        $left = rand(0, 100);
+        $top = rand(-200, 0);
+        $duration = rand(5, 15);
+        $opacity = rand(30, 100) / 100;
+        $fontSize = rand(12, 20);
 
-    echo "<div class='falling-letter' style='
+        echo "<div class='falling-letter' style='
         left: {$left}vw;
         top: {$top}px;
         animation-duration: {$duration}s;
         opacity: {$opacity};
         font-size: {$fontSize}px;
     '>{$char}</div>";
-}
-?>
+    }
+    ?>
 
 
-<?php include 'includes/navebar.php'; ?>
+    <?php include 'includes/navebar.php'; ?>
 
     <section class="min-h-screen flex items-center justify-center px-4 relative z-10">
         <div class="w-full max-w-2xl form-card rounded-2xl shadow-xl p-8">
@@ -116,7 +116,7 @@ for ($i = 0; $i < $count; $i++) {
                 </div>
 
                 <button type="submit" name="submit" class="mt-6 w-full bg-red-600 hover:bg-red-700 rounded-xl px-4 py-3 font-bold transition">
-                    Envoyer ma demande 
+                    Envoyer ma demande
                 </button>
             </form>
         </div>

@@ -1,5 +1,5 @@
 <?php
-require 'config.php'; 
+require 'config.php';
 
 if (isset($_POST['submit'])) {
     $required = ['nom', 'prenom', 'email', 'demande', 'telephone', 'brend'];
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $message = "L'adresse email n'est pas valide.";
         } elseif (!preg_match('/^(0[5-7][0-9]{8}|\+213[5-7][0-9]{8}|00213[5-7][0-9]{8})$/', $telephone)) {
-    $message = "Le numéro de téléphone algérien est invalide.";
+            $message = "Le numéro de téléphone algérien est invalide.";
         } else {
             $stmt1 = $conn->prepare("SELECT id FROM demandes WHERE LOWER(brend) = ?");
             $stmt1->bind_param("s", $brend_lower);
@@ -59,4 +59,3 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-?>
